@@ -5,10 +5,12 @@
                 <h5>Categoria</h5>
                 <div class="contenidoCategoria" v-if="categoria">
                     <div v-for="categoriaEnCategoria in categoria.categories">
-                        <li>{{ categoriaEnCategoria.name }} {{ categoriaEnCategoria.id }}</li>
+                        <li>{{ categoriaEnCategoria.name }}</li>
                         <ol>
                             <li v-for="productosEnCategoria in categoriaEnCategoria.products">
-                                <div @click="seleccionarProducto(productosEnCategoria.id)">{{ productosEnCategoria.display_name }}{{ productosEnCategoria.id }}</div>
+                                <div @click="seleccionarProducto(productosEnCategoria.id)">
+                                    {{ productosEnCategoria.display_name }}
+                                </div>
                             </li>
                         </ol>
                     </div>
@@ -44,6 +46,7 @@ export default {
             axios.get('http://127.0.0.1:4000/productosEnCategoria/mercadona/' + idCategoria)
             .then(response =>{
                 this.categoria = response.data
+                console.log(this.categoria)
             })
             .catch(error =>{
                 this.error = 'Error al obtener la categoria ' + error.message;
