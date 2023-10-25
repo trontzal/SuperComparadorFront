@@ -3,7 +3,7 @@
     <q-header elevated>
       <q-toolbar>
         <q-toolbar-title class="absolute-center">
-          To Do App
+          Super Comparador
         </q-toolbar-title>
       </q-toolbar>
     </q-header>

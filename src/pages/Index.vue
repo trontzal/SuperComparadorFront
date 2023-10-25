@@ -1,6 +1,6 @@
 <template>
-  <q-page class="q-pa-md">
-    <h1>Index</h1>
+  <q-page class="q-pa-md" id="paginaIndex">
+    <h4>Index</h4>
     <componentePruebas></componentePruebas>
   </q-page>
 </template>
@@ -16,5 +16,8 @@ export default {
 }
 </script>
 <style>
+  #paginaIndex{
+    
+  }
 
 </style>
