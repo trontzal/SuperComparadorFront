@@ -1,12 +1,12 @@
 <template>
-    <div id="producto">
+    <div id="producto" v-if="productoEspecifico">
         <div v-if="productoEspecifico">
-            <p>{{ productoEspecifico.display_name }}</p> 
+            <p>{{ productoEspecifico.display_name }}</p>
             <p>{{ productoEspecifico.brand }}</p>
             <img :src="productoEspecifico.thumbnail" alt="">
         </div>
         <div v-else>
-          <p>No se encontró el producto especificado.</p>
+            <p>Cargando...</p>
         </div>
     </div>
 </template>

@@ -2,12 +2,16 @@
     <div id="categoriasYCategoria">
         <div id="categorias">
             <h5>Categorias</h5>
-            <div v-if="error">{{ error }}</div>
-            <ul>
-                <li v-for="categoria in categorias.results" :key="categoria.id">
-                    <div class="categoriasPrincipales" @click="seleccionarCategoria(categoria.id)">{{ categoria.name }}</div>
-                </li>
-            </ul>
+            <div class="contenidoCategorias">
+                <div v-if="error">{{ error }}</div>
+                <ul>
+                    <li v-for="categoria in categorias.results" :key="categoria.id">
+                        <div class="categoriasPrincipales" @click="seleccionarCategoria(categoria.id)">
+                            {{ categoria.name }}{{ categoria.id }}
+                        </div>
+                    </li>
+                </ul>
+            </div>
         </div>
         <categoria :idCategoria = "categoriaSeleccionada" ></categoria>
     </div>
@@ -53,12 +57,17 @@ export default {
 
 #categoriasYCategoria{
     display: grid;
-    grid-template-columns: 1fr 2fr;
+    grid-template-columns: 1fr 3fr;
 }
 
 .categoriasPrincipales{
     cursor: pointer;
     margin-top: 0.3rem;
+}
+
+.contenidoCategorias{
+    overflow: auto;
+    max-height: 60%;
 }
 
 </style>

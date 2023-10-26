@@ -2,22 +2,17 @@
     <div id="categoriaYProducto">
         <div id="categoria">
             <div class="categoriaContenido">
-                <h5>Categoria</h5>
+                <h5>Subcategoria</h5>
                 <div class="contenidoCategoria" v-if="categoria">
                     <div v-for="categoriaEnCategoria in categoria.categories">
                         <li @click="seleccionarCaterogia(categoriaEnCategoria)">{{ categoriaEnCategoria.name }}{{
                             categoriaEnCategoria.id }}</li>
-                        <div v-if="categoriaSeleccionada && categoriaEnCategoria.id === categoriaSeleccionada.id">
-                            <div v-for="productosEnCategoria in categoriaEnCategoria.products">
-                                {{ productosEnCategoria.id }}
-                            </div>
-                        </div>
                     </div>
                 </div>
             </div>
         </div>
-            <div>
-                <div v-for="productoId in productosIDs" :key="productoId">
+            <div id="componenteProductos">
+                <div v-for="productoId in productosIDs" :key="productoId" >
                     <producto :idProducto="productoId"></producto>
                 </div>
             </div>
@@ -73,6 +68,15 @@ export default {
 <style>
 #categoriaYProducto {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr 3fr;
+}
+
+#componenteProductos{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+#componenteProductos > div{
+    border: 1px solid black;
 }
 </style>
