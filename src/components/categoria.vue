@@ -5,24 +5,24 @@
                 <h5>Categoria</h5>
                 <div class="contenidoCategoria" v-if="categoria">
                     <div v-for="categoriaEnCategoria in categoria.categories">
-                        <li>{{ categoriaEnCategoria.name }}</li>
-                        <ol>
-                            <li v-for="productosEnCategoria in categoriaEnCategoria.products">
-                                <div @click="seleccionarProducto(productosEnCategoria.id)">
-                                    {{ productosEnCategoria.display_name }}
-                                </div>
-                            </li>
-                        </ol>
+                        <li @click="seleccionarCaterogia(categoriaEnCategoria)">{{ categoriaEnCategoria.name }}{{
+                            categoriaEnCategoria.id }}</li>
+                        <div v-if="categoriaSeleccionada && categoriaEnCategoria.id === categoriaSeleccionada.id">
+                            <div v-for="productosEnCategoria in categoriaEnCategoria.products">
+                                {{ productosEnCategoria.id }}
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-        <div>
-            <producto :idProducto="productoSeleccionado"></producto>
-        </div>
+            <div>
+                <div v-for="productoId in productosIDs" :key="productoId">
+                    <producto :idProducto="productoId"></producto>
+                </div>
+            </div>
     </div>
 </template>
-
 
 <script>
 import axios from 'axios'
@@ -31,42 +31,48 @@ import producto from 'src/components/producto.vue'
 export default {
     name: "categoria",
     props: ["idCategoria"],
-    data(){
-        return{
-            error : null,
-            categoria : null,
-            productoSeleccionado: null
+    data() {
+        return {
+            error: null,
+            categoria: null,
+            productoSeleccionado: null,
+            mostrarProductos: false,
+            categoriaSeleccionada: null,
+            productosIDs: []
         }
     },
-    components:{
+    components: {
         producto
     },
     watch: {
         idCategoria(idCategoria) {
             axios.get('http://127.0.0.1:4000/productosEnCategoria/mercadona/' + idCategoria)
-            .then(response =>{
-                this.categoria = response.data
-                console.log(this.categoria)
-            })
-            .catch(error =>{
-                this.error = 'Error al obtener la categoria ' + error.message;
-            })
+                .then(response => {
+                    this.categoria = response.data;
+                })
+                .catch(error => {
+                    this.error = 'Error al obtener la categoria ' + error.message;
+                })
         },
     },
-    methods:{
-        seleccionarProducto(productoId){
-            this.productoSeleccionado = productoId
-            console.log(this.productoSeleccionado)
+    methods: {
+        seleccionarCaterogia(categoria) {
+            this.categoriaSeleccionada = categoria;
+            this.productosIDs = [];
+
+            if (categoria.products) {
+                categoria.products.forEach(producto => {
+                    this.productosIDs.push(producto.id);
+                });
+            }
         }
     }
 };
 </script>
 
 <style>
-
-#categoriaYProducto{
+#categoriaYProducto {
     display: grid;
     grid-template-columns: 1fr 1fr;
 }
-
 </style>

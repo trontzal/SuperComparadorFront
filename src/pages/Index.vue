@@ -16,8 +16,5 @@ export default {
 }
 </script>
 <style>
-  #paginaIndex{
-    
-  }
 
 </style>

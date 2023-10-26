@@ -33,7 +33,6 @@ export default {
                             for (const producto of categoria.products) {
                                 if (producto.id == this.idProducto) {
                                     this.productoEncontrado = producto;
-                                    console.log(this.productoEncontrado)
                                     break;
                                 }
                             }

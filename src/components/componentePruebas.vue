@@ -1,7 +1,7 @@
 <template>
     <div id="categoriasYCategoria">
         <div id="categorias">
-            <h5>Categorias Mercadona</h5>
+            <h5>Categorias</h5>
             <div v-if="error">{{ error }}</div>
             <ul>
                 <li v-for="categoria in categorias.results" :key="categoria.id">

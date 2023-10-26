@@ -1,10 +1,12 @@
 <template>
     <div id="producto">
-        <h5>Producto</h5>
         <div v-if="productoEspecifico">
             <p>{{ productoEspecifico.display_name }}</p> 
             <p>{{ productoEspecifico.brand }}</p>
             <img :src="productoEspecifico.thumbnail" alt="">
+        </div>
+        <div v-else>
+          <p>No se encontró el producto especificado.</p>
         </div>
     </div>
 </template>
@@ -30,7 +32,6 @@ export default {
                 axios.get('http://127.0.0.1:4000/productosEspecificos/mercadona/' + this.idProducto)
                     .then(response => {
                         this.productoEspecifico = response.data
-                        console.log(this.productoEspecifico)
                     })
                     .catch(error => {
                         this.error = 'Error al obtener el producto: ' + error.message;
