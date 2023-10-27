@@ -1,17 +1,18 @@
 <template>
     <q-page class="q-pa-md">
         <h1>Prueba</h1>
-        <pruebaPinia></pruebaPinia>
+        <categoria></categoria>
     </q-page>
 </template>
 
 <script>
 import pruebaPinia from 'src/components/pruebaPinia.vue';
+import categoria from 'src/components/subCategoria.vue'
 
 export default {
     name: 'Index',
     components: {
-        pruebaPinia
+        categoria
     }
 }
 </script>

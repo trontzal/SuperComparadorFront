@@ -1,16 +1,16 @@
 <template>
   <q-page class="q-pa-md" id="paginaIndex">
-    <componentePruebas></componentePruebas>
+    <categorias></categorias>
   </q-page>
 </template>
 
 <script>
-import componentePruebas from 'src/components/componentePruebas.vue';
+import categorias from 'src/components/cateogiras.vue';
 
 export default {
   name: 'Index',
   components:{
-    componentePruebas
+    categorias
   }
 }
 </script>

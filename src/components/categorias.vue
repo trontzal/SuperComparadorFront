@@ -13,16 +13,24 @@
                 </ul>
             </div>
         </div>
-        <categoria :idCategoria = "categoriaSeleccionada" ></categoria>
+        <!-- <categoria :idCategoria = "categoriaSeleccionada" ></categoria> -->
     </div>
 </template>
 
 <script>
 import axios from 'axios';
 import categoria from 'src/components/categoria.vue'
+import { useDatosLLamadas } from 'src/stores/example-store.js';
 
 export default {
     name: 'Pruebas',
+    setup() {
+        const datosLLamadas = useDatosLLamadas();
+
+        return {
+            useDatosLLamadas: datosLLamadas
+        };
+    },
     components:{
         categoria
     },
@@ -48,6 +56,7 @@ export default {
         },
         seleccionarCategoria(idCategoria){
             this.categoriaSeleccionada = idCategoria
+            this.useDatosLLamadas.setCategoria(idCategoria);
         }
     }
 };

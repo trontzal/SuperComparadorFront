@@ -3,6 +3,7 @@
         <div id="categoria">
             <div class="categoriaContenido">
                 <h5>Subcategoria</h5>
+                <p>{{ useDatosLLamadas.categoriaSeleccionada }}</p>
                 <div class="contenidoCategoria" v-if="categoria">
                     <div v-for="categoriaEnCategoria in categoria.categories">
                         <li @click="seleccionarCaterogia(categoriaEnCategoria)">{{ categoriaEnCategoria.name }}{{
@@ -13,7 +14,7 @@
         </div>
         <div id="componenteProductos">   
             <div v-for="productoId in productosIDs" :key="productoId" >
-                <producto :idProducto="productoId"></producto>
+                <!-- <producto :idProducto="productoId"></producto> -->
             </div>
         </div>
     </div>
@@ -22,9 +23,17 @@
 <script>
 import axios from 'axios'
 import producto from 'src/components/producto.vue'
+import { useDatosLLamadas } from 'src/stores/example-store.js';
 
 export default {
     name: "categoria",
+    setup() {
+        const datosLLamadas = useDatosLLamadas();
+
+        return {
+            useDatosLLamadas: datosLLamadas
+        };
+    },
     props: ["idCategoria"],
     data() {
         return {
