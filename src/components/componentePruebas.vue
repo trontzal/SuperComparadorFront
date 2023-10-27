@@ -58,6 +58,7 @@ export default {
 #categoriasYCategoria{
     display: grid;
     grid-template-columns: 1fr 3fr;
+    max-height: 60%;
 }
 
 .categoriasPrincipales{

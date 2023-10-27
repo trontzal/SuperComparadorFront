@@ -11,11 +11,11 @@
                 </div>
             </div>
         </div>
-            <div id="componenteProductos">
-                <div v-for="productoId in productosIDs" :key="productoId" >
-                    <producto :idProducto="productoId"></producto>
-                </div>
+        <div id="componenteProductos">   
+            <div v-for="productoId in productosIDs" :key="productoId" >
+                <producto :idProducto="productoId"></producto>
             </div>
+        </div>
     </div>
 </template>
 
@@ -76,7 +76,4 @@ export default {
     flex-wrap: wrap;
 }
 
-#componenteProductos > div{
-    border: 1px solid black;
-}
 </style>
